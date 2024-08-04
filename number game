@@ -1,0 +1,47 @@
+import java.util.Random;
+ java.util.Scanner;
+
+public class NumberGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
+        int score = 0;
+        int rounds = 0;
+
+        do {
+            int randomNumber = rand.nextInt(100) + 1;   // Generate a random a number bw 1 and 100
+            int Guess;
+            int tries = 0;
+            int maxtries = 5; // Set the maximum number of attempts
+
+            System.out.println("Round " + (rounds + 1));
+            do {
+                System.out.println("Guess a number bw 1 and 100:");
+                Guess = scanner.nextInt();
+                tries++;
+
+                if (Guess < randomNumber) {
+                    System.out.println("its low. Try again.");
+                } else if
+                (Guess > randomNumber) {
+                    System.out.println("its high. Try again.");
+                } else {
+                    System.out.println("yayy! You guessed the number.");
+                    score += maxtries- tries + 1;      // Update the score based on attempts taken
+                    break;
+                }
+
+            } while (Guess != randomNumber && tries < maxtries);
+
+            if (tries == maxtries) {
+                System.out.println("Sorry, you've run out of tries. The number was: " + randomNumber);
+            }
+
+            rounds++;
+            System.out.println("Your current score: " + score);
+ System.out.println("Do you want to play another round? (yes/no)");
+        } while (scanner.next().equalsIgnoreCase("yes"));
+System.out.println("Game over! Total rounds played: " + rounds + " | Final score: " + score);
+        scanner.close();
+    }
+}
